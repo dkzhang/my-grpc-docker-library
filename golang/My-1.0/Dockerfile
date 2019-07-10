@@ -1,8 +1,7 @@
 # Author: DKZhang
 
 # Dockerfile for gRPC Go
-# DK: Change golang:1.10 to golang:1.12.5
-FROM golang:1.12.5
+FROM golang
 
 # install protobuf protoc-gen-go
 # Get grpc-go from GitHub

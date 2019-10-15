@@ -4,7 +4,7 @@
 FROM arm32v7/golang
 
 RUN sudo apt-get update && \
-    sudo apt-get install autoconf automake libtool curl make g++ unzip -y && \
+    sudo apt-get -y install autoconf automake libtool curl make g++ unzip && \
     git clone https://github.com/protocolbuffers/protobuf.git && \
     cd protobuf && \
     git submodule update --init --recursive && \

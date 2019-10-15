@@ -12,5 +12,5 @@ RUN git submodule update --init --recursive && \
 RUN      ./configure && \
          make && \
          make check && \
-         sudo make install && \
-         sudo ldconfig
+         make install && \
+         ldconfig

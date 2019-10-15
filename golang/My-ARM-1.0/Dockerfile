@@ -85,4 +85,33 @@ RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
 WORKDIR $GOPATH
 
 ###################################################################################################
-#grpc
+# install protobuf
+RUN apt-get update && \
+    apt-get -y install autoconf automake libtool curl make g++ unzip libffi-dev
+
+RUN git clone https://github.com/protocolbuffers/protobuf.git
+
+WORKDIR /go/protobuf
+RUN git submodule update --init --recursive && \
+    ./autogen.sh
+
+RUN      ./configure && \
+         make && \
+         make check && \
+         make install && \
+         ldconfig
+
+###################################################################################################
+# install protoc-gen-go
+# Get grpc-go from GitHub
+RUN go get github.com/golang/protobuf/proto && \
+    go get github.com/golang/protobuf/protoc-gen-go && \
+    go get google.golang.org/grpc
+
+# DK: Add some files necessary for using grpc
+RUN go get golang.org/x/net/... && \
+    go get golang.org/x/sys/... && \
+    go get golang.org/x/text
+
+###################################################################################################
+WORKDIR $GOPATH

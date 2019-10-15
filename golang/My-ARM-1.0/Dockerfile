@@ -3,8 +3,8 @@
 # Dockerfile for gRPC Go
 FROM arm32v7/golang
 
-RUN sudo apt-get update && \
-    sudo apt-get -y install autoconf automake libtool curl make g++ unzip && \
+RUN apt-get update && \
+    apt-get -y install autoconf automake libtool curl make g++ unzip && \
     git clone https://github.com/protocolbuffers/protobuf.git && \
     cd protobuf && \
     git submodule update --init --recursive && \
@@ -13,8 +13,8 @@ RUN sudo apt-get update && \
 RUN  ./configure && \
      make && \
      make check && \
-     sudo make install && \
-     sudo ldconfig
+     make install && \
+     ldconfig
 
 
 ## install protoc-gen-go

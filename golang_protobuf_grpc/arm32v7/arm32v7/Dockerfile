@@ -1,6 +1,6 @@
 # Author: DKZhang
 
-FROM dkzhang007/golang_protobuf-arm-arm
+FROM dkzhang007/golang_protobuf-arm32v7-arm32v7
 ###################################################################################################
 # install protoc-gen-go
 # Get grpc-go from GitHub
